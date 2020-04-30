@@ -1,0 +1,13 @@
+<div class="div-signin">
+  <!-- 用户名处的required是由Validator提供的内置校验方法，但是html元素也有叫
+ required的属性，所以在form上加一个novalidate，表示不需要浏览器的默认校验-->
+  <form class="form-signin" #myForm="ngForm" novalidate>
+    <h2 class="h3 mb-3 font-weight-normal" style="text-align:center;padding-right: 10px;">Email</h2>
+		<label class="bar-w3-agile" style="padding-right: 100px;"></label>
+    <!-- bootstrap utilities/screenreaders   -->
+    <label for="inputUsername" class="sr-only">User name</label>
+    <input ngModel name="email" id="inputUserEmail" class="form-control" placeholder="Email" type="text">
+
+    <button class="submit" type="submit">Send Reset Link</button>
+  </form>
+</div>

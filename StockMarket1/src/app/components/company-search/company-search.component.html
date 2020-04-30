@@ -1,0 +1,29 @@
+<p>You can do filter table data, in this case with observables and our <code>NgbHighlight</code> component used in Typeahead</p>
+
+<form>
+  <div class="form-group form-inline">
+      Company search: <input class="form-control ml-2" type="text" [formControl]="filter"/>
+  </div>
+</form>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Company</th>
+    <th scope="col">CEO</th>
+    <th scope="col">Stocks</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let company of companies$ | async; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      <ngb-highlight [result]="company.name" [term]="filter.value"></ngb-highlight>
+    </td>
+    <td><ngb-highlight [result]="company.ceo" [term]="filter.value"></ngb-highlight></td>
+    <td><ngb-highlight [result]="company.stocks" [term]="filter.value"></ngb-highlight></td>
+  </tr>
+  </tbody>
+</table>
+<button class="submit" type="submit" [routerLink]="['/create-company']">Create New Company</button>

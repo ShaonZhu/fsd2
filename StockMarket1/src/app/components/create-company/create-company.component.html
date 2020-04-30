@@ -1,0 +1,29 @@
+<div class="div-create">
+  <!-- 用户名处的required是由Validator提供的内置校验方法，但是html元素也有叫
+ required的属性，所以在form上加一个novalidate，表示不需要浏览器的默认校验-->
+  <form class="form-create" #myForm="ngForm" novalidate>
+    <h2 class="h3 mb-3 font-weight-normal" style="text-align:center;padding-right: 10px;">Create Company</h2>
+		<label class="bar-w3-agile" style="padding-right: 100px;width: 250px"></label>
+    <!-- bootstrap utilities/screenreaders   -->
+    <label for="inputCompanyName" class="sr-only">Company name</label>
+    <input ngModel name="name" id="inputCompanyName" class="form-control" placeholder="Company Name" type="text">
+
+    <label for="inputCEO" class="sr-only">CEO</label>
+    <input ngModel name="CEO" id="inputCEO" class="form-control" placeholder="CEO" type="text">
+
+    <label for="inputStockCode" class="sr-only">StockCode</label>
+    <input ngModel name="ceo" id="inputStockCode" class="form-control" placeholder="Stock code" type="text">
+
+    <label for="inputStockPrice" class="sr-only">StockPrice</label>
+    <input ngModel name="email" id="inputStockPrice" class="form-control" placeholder="Stock Price" type="text">
+
+    <label for="inputDescription" class="sr-only">Description</label>
+    <input ngModel name="ceo" id="inputDescription" class="form-control" placeholder="Description" type="text">
+
+    <label for="inputIPODate" class="sr-only">IPODate</label>
+    <input (clickOutside)="d2.toggle()" class="form-control" placeholder="IPO Date(yyyy-mm-dd)"
+    name="dp" id="inputIPODate" placement="bottom-right" ngModel ngbDatepicker
+    #d2="ngbDatepicker" (click)="d2.toggle()" >
+    <button class="submit" type="submit" [routerLink]="['/company-search']">Create</button>
+  </form>
+</div>
