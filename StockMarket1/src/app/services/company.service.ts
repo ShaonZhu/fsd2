@@ -29,6 +29,11 @@ export class CompanyService {
         ceo: 'brian',
         stocks: 'BSE, NSE'
       }
-    ]
+    ];
+  }
+
+  getStockPeriodPrices(): number[] {
+    return [82, 60, 70, 45, 90, 76];
+
   }
 }

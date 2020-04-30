@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
+import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'app-company-chart',
@@ -8,9 +9,7 @@ import { Color, Label } from 'ng2-charts';
   styleUrls: ['./company-chart.component.scss']
 })
 export class CompanyChartComponent implements OnInit {
-  lineChartData: ChartDataSets[] = [
-    { data: [85, 72, 78, 75, 77, 75], label: 'Stock prices' },
-  ];
+  lineChartData: ChartDataSets[] = [];
 
   lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June'];
 
@@ -29,7 +28,9 @@ export class CompanyChartComponent implements OnInit {
   lineChartPlugins = [];
   lineChartType = 'line';
 
-  constructor() { }
+  constructor(companyService: CompanyService) {
+    this.lineChartData = [{ data: companyService.getStockPeriodPrices(), label: 'Stock prices' }];
+  }
 
   ngOnInit(): void {
   }
