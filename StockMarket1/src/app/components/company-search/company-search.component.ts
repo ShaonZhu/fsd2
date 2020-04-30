@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { CompanyService } from '../../services/company.service';
 interface Company {
   name: string;
   ceo: string;
@@ -52,10 +53,10 @@ export class CompanySearchComponent implements OnInit {
   companies$: Observable<Company[]>;
   filter = new FormControl('');
 
-  constructor(pipe: DecimalPipe) {
+  constructor(companyService: CompanyService, pipe: DecimalPipe) {
     this.companies$ = this.filter.valueChanges.pipe(
       startWith(''),
-      map(text => search(text, pipe))
+      map(text => companyService.searchCompany(text))
     );
    }
 
